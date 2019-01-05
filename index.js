@@ -62,20 +62,18 @@ var asdF = function() {
   );
 };
 app.get('/', function(req, res) {
+  sum = [];
   user = '';
   pass = '';
-  console.log(user + ' ' + pass);
   res.render('index');
 });
 app.post('/', function(req, res) {
   user = req.body.username;
   pass = req.body.password;
-  console.log(user + ' ' + pass);
+  asdF();
   res.redirect('/create');
 });
 app.get('/create', function(req, res) {
-  console.log(user + ' ' + pass);
-  asdF();
   res.render('create', { sum: sum });
 });
 app.listen(3000, function() {

@@ -55,5 +55,20 @@
       integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
       crossorigin="anonymous"
     ></script>
+    <script>
+      $('tbody').remove();
+      var tbody = $('<tbody>');
+      var table = $('table');
+
+      var dataTable =
+        '<% sum.forEach(function(item){ %>' +
+        '<tr>' +
+        '<td><%= item[0] %></td>' +
+        '<td><%= item[1] %></td>' +
+        '</tr>' +
+        '<% }); %>';
+      tbody.html(dataTable);
+      table.append(tbody);
+    </script>
   </body>
 </html>
