@@ -1,0 +1,38 @@
+{
+  "name": "testing3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malikov0216/blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malikov0216/blog/issues"
+  },
+  "homepage": "https://github.com/malikov0216/blog#readme",
+  "devDependencies": {
+    "eslint": "^5.11.1",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-node": "^8.0.0",
+    "nodemon": "^1.18.9"
+  },
+  "engines": {
+    "node": ">=10.13.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  }
+}
