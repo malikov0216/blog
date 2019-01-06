@@ -32,7 +32,6 @@ var asdF = function() {
           {
             uri: url + 'earnings',
             method: 'GET',
-            timeout: 5000,
             jar: jar
           },
           function(err, resp, html) {
@@ -71,7 +70,9 @@ app.post('/', function(req, res) {
   user = req.body.username;
   pass = req.body.password;
   asdF();
-  res.redirect('/create');
+  setTimeout(function() {
+    res.redirect('/create');
+  }, 4000);
 });
 app.get('/create', function(req, res) {
   res.render('create', { sum: sum });
