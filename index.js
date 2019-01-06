@@ -5,9 +5,12 @@ var app = express();
 app.set('view engine', 'ejs'); // Шаблонизатор
 app.use(bodyParser.urlencoded({ extended: true })); //для получение post запроса
 
+var isEntered = false;
+var interval;
 var user = '';
 var pass = '';
 var sum = [];
+var name = '';
 var cheerio = require('cheerio');
 var request = require('request');
 var jar = request.jar();
@@ -27,6 +30,9 @@ var asdF = function() {
       followAllRedirects: true
     },
     function(error, response, body) {
+      var ch = cheerio.load(body);
+      name = ch('.nameBanner').text();
+      console.log(name);
       if (!error) {
         request(
           {
@@ -49,6 +55,8 @@ var asdF = function() {
                   sum.push(arrTwo);
                 }
               }
+              isEntered = true;
+              return isEntered;
             } else {
               console.log(err);
             }
@@ -59,8 +67,10 @@ var asdF = function() {
       }
     }
   );
+  return true;
 };
 app.get('/', function(req, res) {
+  isEntered = false;
   sum = [];
   user = '';
   pass = '';
@@ -70,12 +80,15 @@ app.post('/', function(req, res) {
   user = req.body.username;
   pass = req.body.password;
   asdF();
-  setTimeout(function() {
-    res.redirect('/create');
-  }, 4000);
+  interval = setInterval(function() {
+    if (isEntered === true) {
+      clearInterval(interval);
+      res.redirect('/create');
+    }
+  }, 1000);
 });
 app.get('/create', function(req, res) {
-  res.render('create', { sum: sum });
+  res.render('create', { sum: sum, name: name });
 });
 app.listen(3000, function() {
   console.log('Example app listening on port 3000!');
