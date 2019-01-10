@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "start": "cross-env PORT=3001 node index.js",
     "dev": "nodemon index.js"
   },
   "repository": {
@@ -30,9 +30,13 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "bootstrap": "^4.2.1",
     "cheerio": "^1.0.0-rc.2",
+    "cross-env": "^5.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "jquery": "^3.3.1",
+    "mongoose": "^4.13.7",
     "request": "^2.88.0"
   }
 }

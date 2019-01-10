@@ -1,67 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      var tbody = $('tbody');
-      tbody.remove();
-    </script>
-    <title>Show money</title>
-  </head>
-  <body>
-    <h2>Еженедельный заработок <%= name %></h2>
-    <div class="table-responsive">
-      <table class="table table-striped table-sm">
-        <thead>
-          <tr>
-            <th>Дата</th>
-            <th>Сумма</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-    <a href="/">Go back</a>
+<html lang="ru">
 
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      $('tbody').remove();
-      var tbody = $('<tbody>');
-      var table = $('table');
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous" />
+  <script src="/javascripts/jquery.js"></script>
+  <script>
+    var tbody = $('tbody');
+    tbody.remove();
+  </script>
+  <title>Показ зарплаты AliveMax</title>
+</head>
 
-      var dataTable =
-        '<% sum.forEach(function(item){ %>' +
-        '<tr>' +
-        '<td><%= item[0] %></td>' +
-        '<td><%= item[1] %></td>' +
-        '</tr>' +
-        '<% }); %>';
-      tbody.html(dataTable);
-      table.append(tbody);
-    </script>
-  </body>
+<body>
+  <h2>Еженедельный заработок
+    <%= name %>
+  </h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Сумма</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <a href="/" class="btn btn-secondary">Назад</a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script>
+    $('tbody').remove();
+    var tbody = $('<tbody>');
+    var table = $('table');
+    var dataTable =
+      '<% sum.forEach(function(item){ %>' +
+      '<tr>' +
+      '<td><%= item[0] %></td>' +
+      '<td><%= item[1] %></td>' +
+      '</tr>' +
+      '<% }); %>';
+    tbody.html(dataTable);
+    table.append(tbody);
+  </script>
+</body>
+
 </html>
