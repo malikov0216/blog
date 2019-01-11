@@ -4,27 +4,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Main page</title>
+  <title>Главная</title>
   <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
   <link rel="stylesheet" href="/stylesheets/styles.css">
 </head>
 
 <body class="text-center">
-  <!-- <form method="POST">
-    <input type="text" name="username" />
-    <input type="password" name="password" />
-    <button type="submit">Submit</button>
-  </form> -->
   <form method="POST" class="form-signin">
+    <img class="mb-4" src="/images/logo.png" alt="Logotype of AliveMax" width="140" height="120">
     <h1 class="h3 mb-3 font-weight-normal">Авторизация</h1>
     <label for="inputEmail" class="sr-only">Логин</label>
     <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Логин" required autofocus>
     <label for="inputPassword" class="sr-only">Пароль</label>
     <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
+    <div class="checkbox mb-3">
+      <label>
+        <input id="check" type="checkbox" value="remember-me" checked="checked"> Запомнить
+      </label>
+    </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
     <p class="mt-5 mb-3 text-muted">&copy; Nartay Dembayev</p>
   </form>
+  <script src="/javascripts/jquery.js"></script>
   <script>
+    var check = $('#check');
+    var button = $('button');
+    var user = $('[name="username"]');
+    var pass = $('[name="password"]');
+
+    var saveData = function () {
+      var arrayData = [user.val(), pass.val()];
+      var dataString = JSON.stringify(arrayData);
+      localStorage.setItem("user_pass", dataString);
+    };
+    var getSavedData = function () {
+      var dataString = localStorage.getItem("user_pass");
+      if (dataString != null) {
+        console.log(dataString);
+        savedArray = JSON.parse(dataString);
+        user.val(savedArray[0]);
+        pass.val(savedArray[1]);
+      }
+    };
+
+    getSavedData();
+    button.on("click", function () {
+      if (check.prop("checked") === true) {
+        saveData();
+      }
+    });
   </script>
 </body>
 
