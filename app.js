@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cheerio = require('cheerio');
+const request = require('request');
 const requestPromise = require('request-promise');
 
 const app = express();
@@ -18,7 +19,7 @@ let user = 'nartay777';
 let pass = 'dimaw2007';
 let sum = [];
 let userName = '';
-let jar = requestPromise.jar();
+let jar = request.jar();
 let url = 'http://www.alivemax.com/';
 let parseSalaries = function (rows) {
   let sum = [];
